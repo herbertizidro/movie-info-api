@@ -6,6 +6,7 @@ const cors = Cors({
 	methods: ['GET'],
 })
 
+// configura o cors para o endpoint da api
 function middleware(req, res, fn) {
 	return new Promise((resolve, reject) => {
 		fn(req, res, (result) => {
@@ -17,6 +18,7 @@ function middleware(req, res, fn) {
 	})
 }
 
+// mantém a api key do omdb no back-end
 async function MovieInfoAPI(req, res) {
 	//api/movieinfo?search=<movie name>
 	await middleware(req, res, cors)
