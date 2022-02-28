@@ -18,7 +18,7 @@ function middleware(req, res, fn) {
 }
 
 async function MovieInfoAPI(req, res) {
-	//api/movieinfo?search=819191
+	//api/movieinfo?search=<movie name>
 	await middleware(req, res, cors)
 	if(req.method === 'GET'){
 		try{
