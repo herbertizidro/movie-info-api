@@ -23,7 +23,7 @@ async function MovieInfoAPI(req, res) {
 	if(req.method === 'GET'){
 		try{
 			let userSearch = req.query.search;
-			let url = `https://www.omdbapi.com/?apikey=${OMDBAPIKEY}&t=${userSearch}&plot=full`
+			const url = `https://www.omdbapi.com/?apikey=${OMDBAPIKEY}&t=${userSearch}&plot=full`
 			const response = await fetch(url);
 			const json = await response.json();
 			res.status(200).json({ ...json })
