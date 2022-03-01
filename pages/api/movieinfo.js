@@ -18,7 +18,7 @@ function middlewareCors(req, res, fn) {
 	})
 }
 
-// mantém a api key do omdb no back-end
+// mantém as api's key do omdb e do pacote movie-trailer no back-end
 async function MovieInfoAPI(req, res) {
 	/* .../api/movieinfo?search=<movie name> */
 	await middlewareCors(req, res, cors)
@@ -28,6 +28,16 @@ async function MovieInfoAPI(req, res) {
 			const url = `https://www.omdbapi.com/?apikey=${OMDBAPIKEY}&t=${userSearch}&plot=full`
 			const response = await fetch(url);
 			const json = await response.json();
+
+			try{
+				/* pega o id do trailer */
+				const movieTrailer = require('movie-trailer')
+				if(json["Title"].length){
+					movieTrailer(title, year).then((res) => { json.Trailer = res.split('=')[1] })
+				}else{ json.Trailer = '' }
+
+			}catch(e){ json.Trailer = '' }
+
 			res.status(200).json({ ...json })
 		}catch(e){		
 			res.status(500).json({ Response: "False", Message: "MovieInfoAPI - An internal error has ocurred." })
