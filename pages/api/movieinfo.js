@@ -43,7 +43,7 @@ async function MovieInfoAPI(req, res) {
 			json["Trailer"] = trailer
 			res.status(200).json({ ...json })
 		}catch(e){		
-			res.status(500).json({ Response: "False", Message: "MovieInfoAPI - An internal error has ocurred." })
+			res.status(500).json({ Response: "False", Message: "MovieInfoAPIError - An internal error has ocurred." })
 		}
 	}
 }
