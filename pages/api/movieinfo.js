@@ -40,7 +40,7 @@ async function MovieInfoAPI(req, res) {
 
 			}catch(e){ /*...*/ }
 			
-			json["Trailer"] = trailer.length ? trailer.split('=')[1] : trailer;
+			json["Trailer"] = trailer
 			res.status(200).json({ ...json })
 		}catch(e){		
 			res.status(500).json({ Response: "False", Message: "MovieInfoAPI - An internal error has ocurred." })
