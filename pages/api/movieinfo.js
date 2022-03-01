@@ -32,7 +32,7 @@ async function MovieInfoAPI(req, res) {
 			let trailer = '';
 	
 			try{
-				/* pega o id do trailer */
+				/* pega a url do trailer ou de um vídeo relacionado(making of por exemplo) */
 				const movieTrailer = require('movie-trailer')
 				if(json["Title"].length){
 					trailer = await movieTrailer(json["Title"], json["Year"])
