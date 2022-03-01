@@ -33,7 +33,7 @@ async function MovieInfoAPI(req, res) {
 				/* pega o id do trailer */
 				const movieTrailer = require('movie-trailer')
 				if(json["Title"].length){
-					movieTrailer(title, year).then((res) => { json.Trailer = res.split('=')[1] })
+					movieTrailer(json["Title"], json["Year"]).then((res) => { json.Trailer = res.split('=')[1] })
 				}else{ json.Trailer = '' }
 
 			}catch(e){ json.Trailer = '' }
