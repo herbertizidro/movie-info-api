@@ -44,6 +44,7 @@ async function MovieInfoAPI(req, res) {
 	}else{
 		return
 	}
+	
 }
 
 export default MovieInfoAPI
