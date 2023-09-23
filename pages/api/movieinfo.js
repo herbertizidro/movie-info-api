@@ -19,7 +19,6 @@ function middlewareCors(req, res, fn) {
 	})
 }
 
-// mantém as api's key do omdb e do pacote movie-trailer no back-end
 async function MovieInfoAPI(req, res) {
 		
 	if(req.method === 'GET'){
