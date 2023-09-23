@@ -28,13 +28,7 @@ async function MovieInfoAPI(req, res) {
 			const url = `https://www.omdbapi.com/?apikey=${OMDBAPIKEY}&t=${userSearch}&plot=full`;
 			const response = await fetch(url);
 			const json = await response.json();
-			let trailer = '';
-	
-			if(json["Title"].length){
-				trailer = await movieTrailer(json["Title"], json["Year"]);
-			}
-			
-			json["Trailer"] = trailer;
+			if(json["Title"]?.length) json["Trailer"] = await movieTrailer(json["Title"], json["Year"]);
 			res.status(200).json({ ...json });
 		}catch(e){		
 			res.status(500).json({ Response: "False", Message: `MovieInfoAPIError - 
