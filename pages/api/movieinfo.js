@@ -35,7 +35,8 @@ async function MovieInfoAPI(req, res) {
 				An internal error has ocurred: ` + e.message + "" });
 		}
 	}else{
-		return
+		res.status(405).json({ Response: "False", Message: `MovieInfoAPIError - 
+				Method not allowed` });
 	}
 	
 }
